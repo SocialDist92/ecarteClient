@@ -14,7 +14,7 @@ const ListCourses = ({students, deleteStudent, courses}) => {
     }, [students])
 
     const deleteStudentRequest = (id) => {
-        axios.post('/api/delete-student?id=' + id).then(
+        axios.post('https://obscure-wave-52978.herokuapp.com/api/delete-student?id=' + id).then(
             () => {
                 deleteStudent(id)
             }
