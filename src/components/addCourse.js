@@ -31,7 +31,7 @@ class AddCourse extends React.Component {
 
     addCourse = (e) => {
         e.preventDefault()
-        axios.post('https://obscure-wave-52978.herokuapp.com /api/add-course?name=' + this.state.name + '&price=' + this.state.price +
+        axios.post('https://obscure-wave-52978.herokuapp.com/api/add-course?name=' + this.state.name + '&price=' + this.state.price +
             '&startDate=' + this.state.startDate + '&endDate='+this.state.endDate).then(res => {
                 this.props.addCourse(res.data);
                 this.setState(this.originalState);

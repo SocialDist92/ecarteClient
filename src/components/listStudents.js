@@ -24,7 +24,7 @@ class ListCourses extends Component {
 
 
     deleteStudentRequest = (id) => {
-        axios.post('https://obscure-wave-52978.herokuapp.com /api/delete-student?id=' + id).then(
+        axios.post('https://obscure-wave-52978.herokuapp.com/api/delete-student?id=' + id).then(
             () => {
                 this.props.deleteStudent(id)
             }

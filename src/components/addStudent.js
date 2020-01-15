@@ -71,7 +71,7 @@ const AddStudent = ({updateStudents, courses}) => {
     const addStudent = (e) => {
         e.preventDefault()
         const courses = coursesSelected.map(course => course.name)
-        axios.post('https://obscure-wave-52978.herokuapp.com /api/add-student', {name, lastName, courses, debt}).then(res => {
+        axios.post('https://obscure-wave-52978.herokuapp.com/api/add-student', {name, lastName, courses, debt}).then(res => {
             printButtonRef.current.click()
             updateStudents(res.data)
             setSuccess(true)
