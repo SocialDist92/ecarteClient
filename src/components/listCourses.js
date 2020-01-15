@@ -9,7 +9,7 @@ const ListCourses = ({courses, deleteCourse}) => {
     const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre",
         "Noviembre", "Diciembre"]
     const deleteCourseRequest = (id) => {
-        axios.post('https://obscure-wave-52978.herokuapp.com/api/delete-course?id=' + id).then(
+        axios.post('https://obscure-wave-52978.herokuapp.com /api/delete-course?id=' + id).then(
             () => {
                 deleteCourse(id)
             }

@@ -1,5 +1,5 @@
 import React, {useState, useRef} from 'react';
-import {Form, Button, Alert} from 'react-bootstrap';
+import {Form, Button, Alert, InputGroup, FormControl} from 'react-bootstrap';
 import Ticket from './ticket';
 import ReactToPrint from 'react-to-print';
 import axios from 'axios';
@@ -16,6 +16,7 @@ const AddStudent = ({updateStudents, courses}) => {
     };
     const [name, setName] = React.useState('')
     const [lastName, setLastName] = React.useState('')
+    const [debt, setDebt] = React.useState('')
     const [coursesSelected, setCoursesSelected] = React.useState([])
     const [success, setSuccess] = React.useState(false)
     const [error, setError] = React.useState(false)
@@ -34,6 +35,7 @@ const AddStudent = ({updateStudents, courses}) => {
     const clearFields = () => {
         setName('')
         setLastName('')
+        setDebt('')
         setCoursesSelected([])
     }
     const setInput = (attr, e) => {
@@ -45,6 +47,10 @@ const AddStudent = ({updateStudents, courses}) => {
                 break;
             case 'lastName':
                 setLastName(e.target.value)
+                break;
+
+            case 'debt':
+                setDebt(e.target.value)
                 break;
             case 'courses':
                 let optionsSelected = [];
@@ -65,7 +71,7 @@ const AddStudent = ({updateStudents, courses}) => {
     const addStudent = (e) => {
         e.preventDefault()
         const courses = coursesSelected.map(course => course.name)
-        axios.post('https://obscure-wave-52978.herokuapp.com/api/add-student', {name, lastName, courses}).then(res => {
+        axios.post('https://obscure-wave-52978.herokuapp.com /api/add-student', {name, lastName, courses, debt}).then(res => {
             printButtonRef.current.click()
             updateStudents(res.data)
             setSuccess(true)
@@ -85,6 +91,15 @@ const AddStudent = ({updateStudents, courses}) => {
                 <Form.Group>
                     <Form.Control type="text" value={lastName} onChange={setInput.bind(this, 'lastName')}
                                   placeholder="Apellidos"/>
+                </Form.Group>
+                <Form.Group>
+                    <InputGroup>
+                        <InputGroup.Prepend>
+                            <InputGroup.Text>$</InputGroup.Text>
+                        </InputGroup.Prepend>
+                        <FormControl value={debt} type="number" onChange={setInput.bind(this, 'debt')} placeholder="Debe"
+                                     aria-label="Amount (to the nearest dollar)"/>
+                    </InputGroup>
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlSelect2">
                     <Form.Label>Cursos:</Form.Label>

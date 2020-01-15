@@ -16,6 +16,7 @@ class App extends React.Component {
             contentKey: 'list',
             students: [],
             courses: []
+
         }
     }
 
@@ -49,13 +50,13 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('https://obscure-wave-52978.herokuapp.com/api/get-students').then(res => {
+        axios.get('https://obscure-wave-52978.herokuapp.com /api/get-students').then(res => {
             this.setState({
                 students: [...res.data]
             })
         }).catch(err => console.error(err))
 
-        axios.get('https://obscure-wave-52978.herokuapp.com/api/get-courses').then(res => {
+        axios.get('https://obscure-wave-52978.herokuapp.com /api/get-courses').then(res => {
             this.setState({
                 courses: [...res.data]
             })
